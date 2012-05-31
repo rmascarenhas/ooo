@@ -1,0 +1,25 @@
+h1= title
+p Welcome to #{title}
+
+br 
+br
+
+p Here you can find my posts!
+
+- if (posts.length === 0)
+  p
+   i No posts yet. Keep waiting!
+- else
+  h3 Posts
+  each post in posts
+    p
+      b= post.id
+
+    p
+      i= post.value.description
+
+    p= post.value.content
+  
+
+p 
+  a(href='/posts/new') Write a new post

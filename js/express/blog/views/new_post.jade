@@ -1,0 +1,23 @@
+h1 New post 
+p Write a new post! 
+
+p Fill in the form below: 
+
+form(method="post", action="/posts/new")
+  p 
+    b Title
+  p
+    input(type="text", name="title")
+
+  p 
+    b Description
+  p
+    input(type="text", name="description")
+
+  p
+    b Content
+  p
+    textarea(name="content")
+
+  p
+    input(type="submit", name="commit", value="Publish")
