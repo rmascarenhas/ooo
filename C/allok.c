@@ -16,8 +16,6 @@ Usage:
 #define _BSD_SOURCE
 #include <unistd.h>
 
-#include <stdio.h>
-
 /*
    allok behaves similarly with malloc(3). It mantains a free list of memory
    that can be reused in future calls of allok. When it is necessary to expand
@@ -90,7 +88,7 @@ allok(size_t size) {
     intptr_t *it;
     for (it = (intptr_t *) free_list; 
             it != NULL && *it < size; 
-            it = (intptr_t *) *(((void **) ++it)+1)
+            it = (intptr_t *) *(((void **) it+1)+1)
     );
 
     /* No big enough block of free memory */
@@ -137,8 +135,6 @@ allok(size_t size) {
 
         /* block size is bigger than requested size */
 
-        printf("Free block size: %d\n", *it);
-
         /* Write meta information in the remaining memory */
         base = (char *) it;
         base += sizeof(intptr_t) + size;
@@ -164,6 +160,8 @@ allok(size_t size) {
 /*********************************************************************
  ********************************* TEST ******************************
  *********************************************************************/
+
+#include <stdio.h>
 
 static const int N_TESTS = 1024;
 
