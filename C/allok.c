@@ -31,7 +31,7 @@ Usage:
    the request. This avoids the problem of having many small free blocks of memory
    that are hard to be reused, which is typical of best fit algorithms.
 
-   The program break is only shrinked when there is at least ALOK_MAX_FREE_MEM
+   The program break is only incremented when there is at least ALOK_MAX_FREE_MEM
    joint bytes bellow the program break.
 
 
@@ -56,8 +56,8 @@ void *
 allok(size_t size) {
 
 
-/* shrinks the program break */
-#define shrink() \
+/* increments the program break */
+#define grow() \
     allocated_size = size + ALLOK_GROWTH_BASE * ++resizes; \
     free_list = sbrk(size + ALLOK_GROWTH_BASE * ++resizes); \
     /* could not change program break */ \
@@ -78,7 +78,7 @@ allok(size_t size) {
 
     /* initial memory allocation */
     if (free_list == NULL) {
-        shrink();
+        grow();
 
         /* there are no previous or next blocks in this case */
         void **ptrs = (void **) ++b_siz;
@@ -95,9 +95,9 @@ allok(size_t size) {
 
     /* No big enough block of free memory */
     if (it == NULL) {
-        /* shrink program break */
+        /* increments program break */
         void *previous_fl = free_list;
-        shrink();
+        grow();
         *b_siz = size;
 
         base = (char *) free_list;
@@ -164,8 +164,6 @@ allok(size_t size) {
 /*********************************************************************
  ********************************* TEST ******************************
  *********************************************************************/
-
-//#include<malloc.h>
 
 static const int N_TESTS = 1024;
 
