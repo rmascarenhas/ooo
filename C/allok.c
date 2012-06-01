@@ -167,16 +167,15 @@ static const int N_TESTS = 1024;
 
 int
 main() {
-    int **v = (int **) allok(N_TESTS*sizeof(int *));;
+    int *v = (int *) allok(N_TESTS*sizeof(int));;
 
     int i;
     for (i = 0; i < N_TESTS; ++i) {
-        v[i] = (int *) allok(sizeof(int));
-        *(v[i]) = i;
+        v[i] = i;
     }
 
     for (i = 0; i < N_TESTS; ++i) {
-        printf("%d\n", *(v[i]));
+        printf("%d\n", v[i]);
     }
 
     return 0;
