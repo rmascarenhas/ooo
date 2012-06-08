@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    url_tracker (1.0)
+    url_tracker (1.1)
       eventmachine
       libnotify
       notifier
