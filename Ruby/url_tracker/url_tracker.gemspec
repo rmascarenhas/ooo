@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
 
   s.author = 'Renato Mascarenhas'
   s.email  = 'renato.mascosta@gmail.com'
+  s.homepage = 'https://github.com/rmascarenhas/ooo/tree/master/Ruby/url_tracker'
 
   s.files  = FileList['lib/*.rb', 'bin/*', 'test/*.rb'].to_a
   s.bindir = 'bin'
