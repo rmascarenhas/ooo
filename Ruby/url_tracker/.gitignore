@@ -1,0 +1,7 @@
+.rvmrc
+*~
+vendor/
+pkg/
+rdoc/
+tags
+.bundle

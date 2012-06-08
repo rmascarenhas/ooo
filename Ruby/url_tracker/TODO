@@ -1,0 +1,16 @@
+Things Yet To Be Done
+=====================
+
+* Use libnotify (or Notifier) when a change in a page is detected
+
+* A Client can only send one message to a running server, since the server
+  does not keep a pool of connections, relying on SocketCommunication. Implement
+  a pool of connections is adequate, and even a MAX_CONN_QUEUE constant is defined
+  for socket method calls purposes.
+
+* Maybe refactor the SocketCommunication module, divinding it into client
+  and server methods. Right now the code is a little convoluted due to the
+  bind/connect duality.
+
+* Study Celluloid, EventMachine is way too buggy. Could also be useful in the
+  connection pooling.

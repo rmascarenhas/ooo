@@ -1,0 +1,20 @@
+PATH
+  remote: .
+  specs:
+    url_tracker (0.1)
+      eventmachine
+      libnotify
+      notifier
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    eventmachine (0.12.10)
+    libnotify (0.7.2)
+    notifier (0.2.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  url_tracker!
